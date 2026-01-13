@@ -1,0 +1,52 @@
+# 🔥 Firewall Configuration & Network Traffic Control (Linux)
+
+## 📌 Project Overview
+This project demonstrates the implementation of a **Linux-based firewall** using **iptables** to control inbound and outbound network traffic.  
+The objective is to **restrict unauthorized access**, **reduce attack surface**, and **validate firewall effectiveness** using network scanning tools.
+
+---
+
+## 🎯 Objectives
+- Configure firewall rules to filter network traffic
+- Block unnecessary and insecure protocols
+- Allow only required services (e.g., SSH)
+- Detect and prevent unauthorized access attempts
+- Validate firewall behavior using network scanning
+
+---
+
+## 🛠 Tools & Technologies
+- Linux (Ubuntu / Kali Linux)
+- iptables (Linux firewall utility)
+- Nmap (Network scanning tool)
+- VirtualBox (Lab environment)
+
+---
+
+## 🧪 Lab Environment
+- **Firewall System:** Linux VM (Ubuntu / Kali)
+- **Test System:** Attacker / Client Machine
+- **Network Mode:** NAT / Host-Only Adapter
+
+---
+
+## 🔐 Firewall Rules Implemented
+
+| Rule Description | Command | Purpose |
+|------------------|--------|---------|
+| List existing rules | `iptables -L` | View current firewall rules |
+| Block ICMP (Ping) | `iptables -A INPUT -p icmp --icmp-type echo-request -j DROP` | Prevent host discovery |
+| Allow SSH | `iptables -A INPUT -p tcp --dport 22 -j ACCEPT` | Enable secure remote access |
+| Block specific IP | `iptables -A INPUT -s 192.168.1.100 -j DROP` | Block malicious host |
+| View rules (verbose) | `iptables -L -v` | Monitor packet activity |
+| Flush rules | `iptables -F` | Reset firewall configuration |
+
+---
+
+## 🧪 Testing & Validation
+- **Ping Test:** Verified ICMP blocking
+- **Port Scanning:** Used Nmap to identify open and filtered ports
+- **Rule Monitoring:** Checked packet and byte counters using verbose mode
+
+Example:
+nmap <target-ip>
